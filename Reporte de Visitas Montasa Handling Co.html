@@ -473,16 +473,12 @@ document.getElementById('visitForm').addEventListener('submit', async function(e
 
   // Si no hay URL configurada aún, mostrar los datos (modo demo)
   if (SCRIPT_URL === 'https://default92966501364244878223f111eb54ac.2a.environment.api.powerplatform.com:443/powerautomate/automations/direct/workflows/9a262596a37f4d018aaccc768d8d2b87/triggers/manual/paths/invoke?api-version=1') {
-    mostrarToast('MODO DEMO: Formulario funcionando. Configure la URL del Apps Script para guardar en Google Sheets.\n\nDatos: ' + JSON.stringify(datos, null, 2), 'success');
-    btn.disabled = false;
-    btn.innerHTML = '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" style="width:18px;height:18px"><path d="M22 2L11 13M22 2L15 22l-4-9-9-4 20-7z"/></svg> Enviar reporte';
-    return;
   }
 
   try {
     await fetch(SCRIPT_URL, {
       method: 'POST',
-      mode: 'no-cors',
+      
       headers: { 'Content-Type': 'application/json' },
       body: JSON.stringify(datos),
     });
